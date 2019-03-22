@@ -9,4 +9,4 @@ with gui and ai opponent (possibility for ai experimentation)
 
 _____________________________________________
 log:
-22/03 2019: "added main classes fuctionality"
+22/03 2019: "added main classes functionality"
