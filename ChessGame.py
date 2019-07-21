@@ -1,7 +1,7 @@
 import pygame
 
 
-from ChessBoard import ChessBoard
+from ChessBoard import *
 from ChessPieces import *
 
 
