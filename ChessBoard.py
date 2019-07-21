@@ -1,6 +1,12 @@
 from ChessPieces import *
 
 
+class Square:
+    def __init__(self):
+        self.piece = None
+        self.occupied = False
+
+
 class ChessBoard:
     def __init__(self):
         self.width = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
@@ -12,7 +18,7 @@ class ChessBoard:
         for lst in self.layout:
             for square in lst:
                 self.board.append(square)
-        self.board = {square: None for square in self.board}
+        self.board = {square: Square() for square in self.board}
 
         self.ready_board()
 
@@ -21,40 +27,44 @@ class ChessBoard:
 
     def ready_board(self):
         # Setting up white:
-        self.board['e1'] = King(WHITE, [0, 4])
-        self.board['d1'] = Queen(WHITE, [0, 3])
-        self.board['a1'] = Rock(WHITE, [0, 0])
-        self.board['h1'] = Rock(WHITE, [0, 7])
-        self.board['b1'] = Knight(WHITE, [0, 1])
-        self.board['g1'] = Knight(WHITE, [0, 6])
-        self.board['c1'] = Bishop(WHITE, [0, 2])
-        self.board['f1'] = Bishop(WHITE, [0, 5])
-        self.board['a2'] = Pawn(WHITE, [1, 0], UP)
-        self.board['b2'] = Pawn(WHITE, [1, 1], UP)
-        self.board['c2'] = Pawn(WHITE, [1, 2], UP)
-        self.board['d2'] = Pawn(WHITE, [1, 3], UP)
-        self.board['e2'] = Pawn(WHITE, [1, 4], UP)
-        self.board['f2'] = Pawn(WHITE, [1, 5], UP)
-        self.board['g2'] = Pawn(WHITE, [1, 6], UP)
-        self.board['h2'] = Pawn(WHITE, [1, 7], UP)
+        self.board['e1'].piece = King(WHITE, [0, 4])
+        self.board['d1'].piece = Queen(WHITE, [0, 3])
+        self.board['a1'].piece = Rock(WHITE, [0, 0])
+        self.board['h1'].piece = Rock(WHITE, [0, 7])
+        self.board['b1'].piece = Knight(WHITE, [0, 1])
+        self.board['g1'].piece = Knight(WHITE, [0, 6])
+        self.board['c1'].piece = Bishop(WHITE, [0, 2])
+        self.board['f1'].piece = Bishop(WHITE, [0, 5])
+        self.board['a2'].piece = Pawn(WHITE, [1, 0], UP)
+        self.board['b2'].piece = Pawn(WHITE, [1, 1], UP)
+        self.board['c2'].piece = Pawn(WHITE, [1, 2], UP)
+        self.board['d2'].piece = Pawn(WHITE, [1, 3], UP)
+        self.board['e2'].piece = Pawn(WHITE, [1, 4], UP)
+        self.board['f2'].piece = Pawn(WHITE, [1, 5], UP)
+        self.board['g2'].piece = Pawn(WHITE, [1, 6], UP)
+        self.board['h2'].piece = Pawn(WHITE, [1, 7], UP)
 
         # Setting up black:
-        self.board['e8'] = King(BLACK, [7, 4])
-        self.board['d8'] = Queen(BLACK, [7, 3])
-        self.board['a8'] = Rock(BLACK, [7, 0])
-        self.board['h8'] = Rock(BLACK, [7, 7])
-        self.board['b8'] = Knight(BLACK, [7, 1])
-        self.board['g8'] = Knight(BLACK, [7, 6])
-        self.board['c8'] = Bishop(BLACK, [7, 2])
-        self.board['f8'] = Bishop(BLACK, [7, 5])
-        self.board['a7'] = Pawn(BLACK, [6, 0], DOWN)
-        self.board['b7'] = Pawn(BLACK, [6, 1], DOWN)
-        self.board['c7'] = Pawn(BLACK, [6, 2], DOWN)
-        self.board['d7'] = Pawn(BLACK, [6, 3], DOWN)
-        self.board['e7'] = Pawn(BLACK, [6, 4], DOWN)
-        self.board['f7'] = Pawn(BLACK, [6, 5], DOWN)
-        self.board['g7'] = Pawn(BLACK, [6, 6], DOWN)
-        self.board['h7'] = Pawn(BLACK, [6, 7], DOWN)
+        self.board['e8'].piece = King(BLACK, [7, 4])
+        self.board['d8'].piece = Queen(BLACK, [7, 3])
+        self.board['a8'].piece = Rock(BLACK, [7, 0])
+        self.board['h8'].piece = Rock(BLACK, [7, 7])
+        self.board['b8'].piece = Knight(BLACK, [7, 1])
+        self.board['g8'].piece = Knight(BLACK, [7, 6])
+        self.board['c8'].piece = Bishop(BLACK, [7, 2])
+        self.board['f8'].piece = Bishop(BLACK, [7, 5])
+        self.board['a7'].piece = Pawn(BLACK, [6, 0], DOWN)
+        self.board['b7'].piece = Pawn(BLACK, [6, 1], DOWN)
+        self.board['c7'].piece = Pawn(BLACK, [6, 2], DOWN)
+        self.board['d7'].piece = Pawn(BLACK, [6, 3], DOWN)
+        self.board['e7'].piece = Pawn(BLACK, [6, 4], DOWN)
+        self.board['f7'].piece = Pawn(BLACK, [6, 5], DOWN)
+        self.board['g7'].piece = Pawn(BLACK, [6, 6], DOWN)
+        self.board['h7'].piece = Pawn(BLACK, [6, 7], DOWN)
+
+        for square in self.board:
+            if square.piece:
+                square.occupied = True
 
 
 if __name__ == '__main__':
